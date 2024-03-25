@@ -80,6 +80,8 @@
         localStorage.setItem('type',document.querySelector("body > div > div:nth-child(2) > select").value)
         localStorage.setItem('user',JSON.stringify(res.additionalUserInfo))
         window.location.href = "/dashboard";
+      }).catch(e => {
+        alert(e.message)
       })
     }
     window.googlelogin = googlelogin;
