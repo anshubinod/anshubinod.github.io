@@ -1,0 +1,13 @@
+{
+  "background_color": "#111111",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "AnshuBinod",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "AnshuBinod",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "id": "anjankrm",
+  "description": "A simple P2B"
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+  body {
+    background-color: #111;
+    color: #111;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .input-field {
+    margin-bottom: 20px;
+  }
+
+  .option-box {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3498db; /* Light Blue */
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+
+  .input-box {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    background-color: #3498db; /* Light Blue */
+    color: #fff;
+  }
+</style>
+      <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  //import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  //import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+  //  import { getAuth } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAgzP8K7oWdkDODpWNcFiI7Nlgjh6IYZUU",
+    authDomain: "binodbinodbinoda.firebaseapp.com",
+    projectId: "binodbinodbinoda",
+    storageBucket: "binodbinodbinoda.appspot.com",
+    messagingSenderId: "531294903160",
+    appId: "1:531294903160:web:489778848c62c50bd1c68d",
+    measurementId: "G-ZS69P8BQK7"
+  };
+    firebase.initializeApp(firebaseConfig);
+    let provider = new firebase.auth.GoogleAuthProvider()
+    firebase.auth().signInWithPopup(provider).then(res=>{console.log(res)});
+</script>
+<script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-ZS69P8BQK7" async=""></script><meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+<body>
+  <div style="text-align:center">
+    <h2>Login</h2>
+    
+    <div class="input-field">
+      <input type="email" class="input-box" placeholder="Email">
+    </div>
+    <button class="button">Login with Gmail</button>
+  </div>
+</body></html>
