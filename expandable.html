@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expandable Element</title>
+<style>
+  .expandable {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+  }
+  .expandable:hover {
+    background-color: #f0f0f0;
+  }
+  .details {
+    display: none;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div id="container"></div>
+
+<script>
+function createExpandableElement(email, name, degree, age, gender, experience, work) {
+    var container = document.getElementById('container');
+
+    var div = document.createElement('div');
+    div.classList.add('expandable');
+    
+    var detailsDiv = document.createElement('div');
+    detailsDiv.classList.add('details');
+    detailsDiv.innerHTML = `
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Degree:</strong> ${degree}</p>
+        <p><strong>Age:</strong> ${age}</p>
+        <p><strong>Gender:</strong> ${gender}</p>
+        <p><strong>Experience:</strong> ${experience}</p>
+        <p><strong>Work:</strong> ${work}</p>
+    `;
+
+    div.innerHTML = `
+        <p><strong>Work:</strong> ${work}</p>
+        <p><strong>Experience:</strong> ${experience}</p>
+        <p><strong>Age:</strong> ${age}</p>
+    `;
+    div.appendChild(detailsDiv);
+
+    div.addEventListener('click', function() {
+        detailsDiv.style.display = (detailsDiv.style.display === 'none') ? 'block' : 'none';
+    });
+
+    container.appendChild(div);
+}
+
+// Example usage
+  window.createExpandableElement = createExpandableElement;
+createExpandableElement('example1@example.com', 'John Doe', 'Bachelor', 30, 'Male', '5 years', 'Software Engineer');
+createExpandableElement('example2@example.com', 'Jane Smith', 'Master', 28, 'Female', '3 years', 'Data Scientist');
+</script>
+
+</body>
+</html>
