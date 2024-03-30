@@ -1,7 +1,7 @@
 <html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Expandable Element with Sorting</title>
+<title>Expandable Element with Sorting and Filtering</title>
 <style>
   .expandable {
     cursor: pointer;
@@ -16,18 +16,31 @@
     display: none;
     margin-top: 10px;
   }
+  #searchInput {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+  }
 </style>
 </head>
 <body>
 
+<div id="searchInput">
+    <label for="search">Search by Work:</label>
+    <input type="text" id="search" oninput="filterUsers()">
+</div><br><br><br>
 <div>
     <label for="sortSelect">Sort by:</label>
-    <select id="sortSelect">
+    <select id="sortSelect" onchange="sortBy()">
         <option value="age">Age (Ascending)</option>
         <option value="experience">Experience (Descending)</option>
     </select>
-    <button onclick="sortBy()">Sort</button>
 </div>
+
+
 <div id="container"><div class="expandable">
         <p><strong>Work:</strong> Software Engineer</p>
         <p><strong>Experience:</strong> 5 years</p>
@@ -113,6 +126,22 @@ function sortBy() {
         });
     }
     renderData();
+}
+
+function filterUsers() {
+    var searchInput = document.getElementById('search').value.toLowerCase();
+    var filteredData = data.filter(function(item) {
+        return item.work.toLowerCase().includes(searchInput);
+    });
+    renderFilteredData(filteredData);
+}
+
+function renderFilteredData(filteredData) {
+    var container = document.getElementById('container');
+    container.innerHTML = '';
+    filteredData.forEach(function(item) {
+        createExpandableElement(item.email, item.name, item.degree, item.age, item.gender, item.experience, item.work);
+    });
 }
 
 renderData();
