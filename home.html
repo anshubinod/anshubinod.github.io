@@ -89,7 +89,13 @@
 <script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-ZS69P8BQK7" async=""></script><meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
 <body style="background-image: url('background.webp');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
   <div style="text-align:center">
-    
+    <h2 id="wlctyp">Welcome {type}</h2>
   </div>
-
+  <script>
+    const capize = (str) => {
+      return str.replace(str[0],str[0].toUpperCase())
+    }
+    const txt = document.querySelector("#wlctyp").innerHTML;
+    document.querySelector('#wlctyp').innerHTML = txt.replace('{type}',capize(window.localStorage.getItem('type')))
+  </script>
 </body></html>
