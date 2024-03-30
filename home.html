@@ -2,8 +2,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Home Page</title>
-  <link rel="manifest" href="manifest.json">
-
 <style>
   body {
     background-color: #111;
@@ -16,34 +14,47 @@
     margin: 0;
   }
 
-  .container {
-    text-align: center;
+  .input-field {
+    margin-bottom: 20px;
   }
 
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
+  .option-box {
+    padding: 10px;
     border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
+    border: none;
+    background-color: #3498db; /* Light Blue */
+    color: #fff;
     font-size: 18px;
     transition: background-color 0.3s;
   }
 
-  .button-login {
-    background-color: #3498db; /* Light Blue */
+  .input-box {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .button-register {
+  .button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     background-color: #2ecc71; /* Green-Cyan */
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s;
   }
 </style>
+   <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
   <script type="module">
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
+  //import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+  //import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-analytics.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -58,27 +69,27 @@
     appId: "1:531294903160:web:489778848c62c50bd1c68d",
     measurementId: "G-ZS69P8BQK7"
   };
-
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-</head>
-<body style="background-image: url('background.webp');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
-    <div style="text-align:center">
-      
-    </div>
+  firebase.initializeApp(firebaseConfig);
+  let provider = new firebase.auth.GoogleAuthProvider()
   
-<script>
-  if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('sw.js')
-  }
-  function href(...args) {
-    window.location.href = args[0];
-  }
-  if (window.localStorage.user && window.localStorage.type) {
-    window.location.href = '/dashboard';
-  }
+    
+    function googlelogin() {
+      firebase.auth().signInWithPopup(provider).then(res => {
+        console.log(res.additionalUserInfo);
+        localStorage.setItem('type',document.querySelector("body > div > div:nth-child(2) > select").value)
+        localStorage.setItem('user',JSON.stringify(res.additionalUserInfo))
+        window.location.href = "/dashboard";
+      }).catch(e => {
+        alert(e.message)
+      })
+    }
+    window.googlelogin = googlelogin;
 </script>
+<script src="https://www.googletagmanager.com/gtag/js?l=dataLayer&amp;id=G-ZS69P8BQK7" async=""></script><meta http-equiv="origin-trial" content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
+<body style="background-image: url('background.webp');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
+  <div style="text-align:center">
+    
+  </div>
 
 </body></html>
