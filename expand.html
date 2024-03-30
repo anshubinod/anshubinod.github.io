@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Expandable Element</title>
+<title>Expandable Element with Sorting</title>
 <style>
   .expandable {
     cursor: pointer;
@@ -22,7 +20,40 @@
 </head>
 <body>
 
-<div id="container"></div>
+<div>
+    <label for="sortSelect">Sort by:</label>
+    <select id="sortSelect">
+        <option value="age">Age (Ascending)</option>
+        <option value="experience">Experience (Descending)</option>
+    </select>
+    <button onclick="sortBy()">Sort</button>
+</div>
+<div id="container"><div class="expandable">
+        <p><strong>Work:</strong> Software Engineer</p>
+        <p><strong>Experience:</strong> 5 years</p>
+        <p><strong>Age:</strong> 30</p>
+    <div class="details">
+        <p><strong>Email:</strong> example1@example.com</p>
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Degree:</strong> Bachelor</p>
+        <p><strong>Age:</strong> 30</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Experience:</strong> 5 years</p>
+        <p><strong>Work:</strong> Software Engineer</p>
+    </div></div><div class="expandable">
+        <p><strong>Work:</strong> Data Scientist</p>
+        <p><strong>Experience:</strong> 3 years</p>
+        <p><strong>Age:</strong> 28</p>
+    <div class="details">
+        <p><strong>Email:</strong> example2@example.com</p>
+        <p><strong>Name:</strong> Jane Smith</p>
+        <p><strong>Degree:</strong> Master</p>
+        <p><strong>Age:</strong> 28</p>
+        <p><strong>Gender:</strong> Female</p>
+        <p><strong>Experience:</strong> 3 years</p>
+        <p><strong>Work:</strong> Data Scientist</p>
+    </div></div></div>
+
 
 <script>
 function createExpandableElement(email, name, degree, age, gender, experience, work) {
@@ -57,11 +88,36 @@ function createExpandableElement(email, name, degree, age, gender, experience, w
     container.appendChild(div);
 }
 
-// Example usage
-  window.createExpandableElement = createExpandableElement;
-createExpandableElement('example1@example.com', 'John Doe', 'Bachelor', 30, 'Male', '5 years', 'Software Engineer');
-createExpandableElement('example2@example.com', 'Jane Smith', 'Master', 28, 'Female', '3 years', 'Data Scientist');
+var data = [
+    { email: 'example1@example.com', name: 'John Doe', degree: 'Bachelor', age: 30, gender: 'Male', experience: '5 years', work: 'Software Engineer' },
+    { email: 'example2@example.com', name: 'Jane Smith', degree: 'Master', age: 28, gender: 'Female', experience: '3 years', work: 'Data Scientist' }
+];
+
+function renderData() {
+    var container = document.getElementById('container');
+    container.innerHTML = '';
+    data.forEach(function(item) {
+        createExpandableElement(item.email, item.name, item.degree, item.age, item.gender, item.experience, item.work);
+    });
+}
+
+function sortBy() {
+    var sortBy = document.getElementById('sortSelect').value;
+    if (sortBy === 'age') {
+        data.sort(function(a, b) {
+            return a.age - b.age;
+        });
+    } else if (sortBy === 'experience') {
+        data.sort(function(a, b) {
+            return parseInt(b.experience) - parseInt(a.experience);
+        });
+    }
+    renderData();
+}
+
+renderData();
 </script>
 
-</body>
-</html>
+
+
+</body></html>
