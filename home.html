@@ -91,6 +91,8 @@
     console.log(db);
     
     db.collection("users").get().then((querySnapshot) => {
+      console.log(typeof querySnapshot);
+      console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
           console.log(`${doc.id} => ${doc.data()}`);
       });
