@@ -218,6 +218,7 @@ function sortBy() {
 }
 
 function filterUsers() {
+  var data = Object.values(window.parsedUsers)
     var searchInput = document.getElementById('search').value.toLowerCase();
     var filteredData = data.filter(function(item) {
         return item.work.toLowerCase().includes(searchInput);
