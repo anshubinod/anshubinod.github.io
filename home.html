@@ -159,7 +159,7 @@
 
 
 <script>
-function createExpandableElement(email, name, degree, age, gender, experience, work) {
+function createExpandableElement(email, name, degree, age, gender, experience, work, phone) {
     var container = document.getElementById('container');
 
     var div = document.createElement('div');
@@ -171,10 +171,8 @@ function createExpandableElement(email, name, degree, age, gender, experience, w
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Degree:</strong> ${degree}</p>
-        <p><strong>Age:</strong> ${age}</p>
         <p><strong>Gender:</strong> ${gender}</p>
-        <p><strong>Experience:</strong> ${experience}</p>
-        <p><strong>Work:</strong> ${work}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
     `;
 
     div.innerHTML = `
@@ -198,7 +196,7 @@ function renderData() {
     var container = document.getElementById('container');
     container.innerHTML = '';
     data.forEach(function(item) {
-        createExpandableElement(item.email, item.name, item.degree, item.age, item.gender, item.experience, item.work);
+        createExpandableElement(item.email, item.name, item.degree, item.age, item.gender, item.experience, item.work, item.phone);
     });
 }
 
@@ -230,7 +228,7 @@ function renderFilteredData(filteredData) {
     var container = document.getElementById('container');
     container.innerHTML = '';
     filteredData.forEach(function(item) {
-        createExpandableElement(item.email, item.name, item.degree, item.age, item.gender, item.experience, item.work);
+        createExpandableElement(item.email, item.name, item.degree, item.age, item.gender, item.experience, item.work, item.phone);
     });
 }
 
