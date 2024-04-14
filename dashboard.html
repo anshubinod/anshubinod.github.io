@@ -134,5 +134,8 @@
       window.localStorage.setItem('user', nobj);
     }
     window.save = save;
+    if (type.toLowerCase() == "customer") {
+      window.location.href = "/home"
+    }
   </script>
 </body></html>
