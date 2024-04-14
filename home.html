@@ -234,13 +234,15 @@ function renderFilteredData(filteredData) {
 }
 
 window.renderData = renderData();
-
+window.setTimeout(() => {
+      window.renderData()
+    }, 500);
 </script>
   <script>
     const capize = (str) => {
       return str.replace(str[0],str[0].toUpperCase())
     }
-    setTimeout(() => {
+    window.setTimeout(() => {
       window.renderData()
     }, 500);
   </script>
