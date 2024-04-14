@@ -184,9 +184,9 @@ function createExpandableElement(email, name, degree, age, gender, experience, w
     `;
     div.appendChild(detailsDiv);
 
-    div.addEventListener('click', function() {
+    div.onclick= function() {
         detailsDiv.style.display = (detailsDiv.style.display === 'none') ? 'block' : 'none';
-    });
+    };
 
     container.appendChild(div);
 }
