@@ -134,7 +134,7 @@
     var obj = JSON.parse(window.localStorage.getItem('user'))
     const type = window.localStorage.getItem('type');
 
-    document.querySelector("#itype").value = localStorage.getItem('type');
+    //document.querySelector("#itype").value = localStorage.getItem('type');
     document.querySelector("#ikyc").value = !obj.isNewUser;
     document.querySelector('#iname').value = obj.profile.name;
     document.querySelector("#iemail").value = obj.profile.email;
